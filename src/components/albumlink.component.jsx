@@ -14,9 +14,17 @@ const AlbumLink = () => {
   const [currentFileName, setCurrentFileName] = useState("select a file...");
 
   const getIdLink = async () => {
-    const idLink = await axios.get(`http://localhost:5000/api/albums/${id}`);
-    setAlbum(idLink.data);
+    await axios
+      .get(`http://localhost:5000/api/albums/${id}`)
+      .then((response) => {
+        setAlbum(response.data);
+      });
   };
+
+  useEffect(() => {
+    getIdLink();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const postImage = async () => {
     try {
@@ -29,14 +37,11 @@ const AlbumLink = () => {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
+      window.location.reload();
     } catch (e) {
       console.log(e);
     }
   };
-
-  useEffect(() => {
-    getIdLink();
-  }, []);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];

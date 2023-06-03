@@ -13,9 +13,8 @@ postImage.post("/:id", async (req, res) => {
       req.files.file.name
     );
     await req.files.file.mv(localPath);
-
-    console.log(req.files.file.name);
-    res.redirect(`http://localhost:3000/albums/${idAlbum}`);
+    res.json({ reloadPage: true });
+    // res.redirect("http://localhost:3000");
   } catch (e) {
     console.log(e);
   }
