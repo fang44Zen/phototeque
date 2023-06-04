@@ -108,6 +108,7 @@ const AlbumLink = () => {
             <IconButton
               onClick={postImage}
               sx={{ color: "blue", "&:hover": { color: "grey" } }}
+              disabled={currentFileName === "select a file..."}
             >
               <AddCircleIcon />
             </IconButton>
