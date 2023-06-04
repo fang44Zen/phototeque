@@ -12,7 +12,7 @@
 /build
 
 # Local image folder
-/server/uploads
+/public/uploads
 
 # misc
 .DS_Store
