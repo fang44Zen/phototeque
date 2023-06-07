@@ -19,12 +19,11 @@ const Albums = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [albums]);
 
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/api/albums/${id}`);
-      fetchData();
       console.log("Album supprimé avec succès");
     } catch (error) {
       console.log(error);
@@ -50,23 +49,3 @@ const Albums = () => {
 };
 
 export default Albums;
-
-// <Box sx={{ width: "30vh" }} mt={1}>
-//   <Card>
-//     <CardContent
-//       sx={{
-//         display: "flex",
-//         justifyContent: "space-between",
-//         alignItems: "center",
-//       }}
-//     >
-//       <CustomLink color={"black"}>{album.title}</CustomLink>
-//       <CustomButton
-//         onClick={() => handleDelete(album._id)}
-//         variant="outlined"
-//       >
-//         <DeleteForeverIcon />
-//       </CustomButton>
-//     </CardContent>
-//   </Card>
-// </Box>

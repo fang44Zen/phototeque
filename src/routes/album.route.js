@@ -1,19 +1,23 @@
 const express = require("express");
 const router = express.Router();
 const Album = require("../models/Album");
+const fs = require("fs-extra");
 const path = require("path");
 
 router.delete("/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    await Album.findByIdAndDelete(id);
-    res.json({ message: "Album supprimé avec succès" });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      message: "Une erreur s'est produite lors de la suppression de l'album",
-    });
-  }
+  const { id } = req.params;
+  await Album.findByIdAndDelete(id);
+  const albumPath = path.join(__dirname, "../../public/uploads", id);
+  fs.remove(albumPath, (error) => {
+    if (error) {
+      console.error(
+        "Une erreur s'est produite lors de la suppression du dossier :",
+        error
+      );
+    } else {
+      console.log("Le dossier a été supprimé avec succès.");
+    }
+  });
 });
 
 router.get("/:id", async (req, res) => {

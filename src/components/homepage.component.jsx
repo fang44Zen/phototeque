@@ -1,4 +1,4 @@
-import { Box, Typography, Alert } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { CustomLink } from "../styles/theme.style";
 
 const HomePage = () => {
