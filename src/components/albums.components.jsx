@@ -40,6 +40,7 @@ const Albums = () => {
               handleDelete={() => handleDelete(album._id)}
               title={album.title}
               albumId={album._id}
+              nmImg={album.images.length}
             />
           </Box>
         ))}

@@ -1,7 +1,7 @@
 import { CustomLink } from "../styles/theme.style";
 import DeleteForeverIcon from "@mui/icons-material/DeleteOutline";
 import styled from "styled-components";
-import { Box, Card, CardContent, Button } from "@mui/material";
+import { Box, Card, CardContent, Button, Typography } from "@mui/material";
 
 const CustomButton = styled(Button)`
   && {
@@ -12,7 +12,7 @@ const CustomButton = styled(Button)`
   }
 `;
 
-const AlbumCard = ({ title, handleDelete, albumId }) => {
+const AlbumCard = ({ title, handleDelete, albumId, nmImg }) => {
   return (
     <Box sx={{ width: "30vh" }} mt={1}>
       <Card>
@@ -30,6 +30,7 @@ const AlbumCard = ({ title, handleDelete, albumId }) => {
           >
             {title}
           </CustomLink>
+          <Typography>{`(${nmImg})`}</Typography>
           <CustomButton onClick={handleDelete} variant="outlined">
             <DeleteForeverIcon />
           </CustomButton>
