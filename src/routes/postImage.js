@@ -23,7 +23,7 @@ postImage.post("/:id", async (req, res) => {
   }
 });
 
-postImage.get("/:id/delete/:imgIndex", async (req, res) => {
+postImage.patch("/:id/delete/:imgIndex", async (req, res) => {
   const idAlbum = req.params.id;
   const album = await Album.findById(idAlbum);
   const imgIndex = req.params.imgIndex;

@@ -43,7 +43,7 @@ const AlbumLink = () => {
   const deleteImage = async (e) => {
     const imgIndex = e.target.getAttribute("data-value");
     try {
-      await axios.get(
+      await axios.patch(
         `http://localhost:5000/api/albums/upload/${id}/delete/${imgIndex}`
       );
       window.location.reload();
